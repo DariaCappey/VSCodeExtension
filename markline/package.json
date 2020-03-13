@@ -10,14 +10,24 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:extension.markline",
+		"onCommand:extension.deleteLinesWith",
+		"onCommand:extension.deleteLinesWithout"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "extension.markline",
+				"title": "markline"
+			},
+			{
+				"command": "extension.deleteLinesWith",
+				"title": "deleteLinesWith"
+			},
+			{
+				"command": "extension.deleteLinesWithout",
+				"title": "deleteLinesWithout"
 			}
 		]
 	},
