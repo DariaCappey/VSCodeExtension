@@ -73,13 +73,14 @@ function removeLines(without) {
 }
 
 function checkIsInLine(line){
+	var isInLine = false;
 	search_for.forEach(function(search){
 		var isInText = line.includes(search);
 		if(isInText){
-			return true;
+			isInLine = true;
 		}
 	});
-	return false;
+	return isInLine;
 }
 
 exports.activate = activate;
