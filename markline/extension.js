@@ -21,17 +21,21 @@ function activate(context) {
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
 	let register_searching = vscode.commands.registerCommand('extension.markline', function () {
-		openInput();
+		let options = {
+			prompt: "Enter here your String to search for.",
+			placeHolder: "Search me"                        
+		  }
+		vscode.window.showInputBox(options).then(addInput);
 	});
 
 	let deleteLinesWith = vscode.commands.registerCommand('extension.deleteLinesWith', function () {
-		vscode.window.showInformationMessage('Delete Lines With');
+		vscode.window.showInformationMessage('Delete Lines With: '+search_for.join(','));
 		getEditorText();
 		removeLines(false);
 	});
 
 	let deleteLinesWithOut = vscode.commands.registerCommand('extension.deleteLinesWithout', function () {
-		vscode.window.showInformationMessage('Delete Lines Without');
+		vscode.window.showInformationMessage('Delete Lines Without: '+search_for.join(','));
 		getEditorText();
 		removeLines(true);
 	});
@@ -41,11 +45,9 @@ function activate(context) {
 	context.subscriptions.push(deleteLinesWithOut);
 }
 
-async function openInput() {
-	let input = await vscode.window.showInputBox();
-	console.log(input);
+async function addInput(input) {
 	search_for.push(input)
-	console.log(search_for);
+	vscode.window.showInformationMessage('Your searching for: '+search_for.join(','));
 }
 
 function getEditorText() {
