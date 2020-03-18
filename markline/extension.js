@@ -14,10 +14,6 @@ var filtered_array = [];
  */
 function activate(context) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "markline" is now active!');
-
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
@@ -29,8 +25,14 @@ function activate(context) {
 		vscode.window.showInputBox(options).then(addInput);
 	});
 
-	let deleteLinesWith = vscode.commands.registerCommand('extension.deleteLinesWith', function () {
-		vscode.window.showInformationMessage('Delete Lines With: '+search_for.join(','));
+	let remove_marker = vscode.commands.registerCommand('extension.removeMarker', function () {
+		vscode.window.showInformationMessage('Cleared all markers.');
+		search_for = [];
+		text_array = [];
+		filtered_array = [];
+	});
+
+	let delete_lines_with = vscode.commands.registerCommand('extension.deleteLinesWith', function () {
 		let editor = vscode.window.activeTextEditor;
 		if(editor) {
 			getEditorText(editor);
@@ -39,10 +41,10 @@ function activate(context) {
 				editBuilder.replace(range, filtered_array.join('\n'));
 			});
 		}
+		vscode.window.showInformationMessage('Delete Lines With: '+search_for.join(','));
 	});
 
-	let deleteLinesWithOut = vscode.commands.registerCommand('extension.deleteLinesWithout', function () {
-		vscode.window.showInformationMessage('Delete Lines Without: '+search_for.join(','));
+	let delete_lines_without = vscode.commands.registerCommand('extension.deleteLinesWithout', function () {
 		let editor = vscode.window.activeTextEditor;
 		if(editor) {
 			getEditorText(editor);
@@ -51,11 +53,13 @@ function activate(context) {
 				editBuilder.replace(range, filtered_array.join('\n'));
 			});
 		}
+		vscode.window.showInformationMessage('Delete Lines Without: '+search_for.join(','));
 	});
 
 	context.subscriptions.push(register_searching);
-	context.subscriptions.push(deleteLinesWith);
-	context.subscriptions.push(deleteLinesWithOut);
+	context.subscriptions.push(remove_marker);
+	context.subscriptions.push(delete_lines_with);
+	context.subscriptions.push(delete_lines_without);
 }
 
 async function addInput(input) {
@@ -67,7 +71,6 @@ function getEditorText(editor) {
 		let document = editor.document;
 		let editor_text = document.getText();
 		text_array = editor_text.split('\n');
-		console.log(text_array);
 		const textEditor = vscode.window.activeTextEditor;
 
 		var firstLine = textEditor.document.lineAt(0);
@@ -83,11 +86,10 @@ function removeLines(without) {
 		filtered_array = [];
 		text_array.forEach(function(line) {
 			var isInLine = checkIsInLine(line);
-			if (!isInLine || without) {
+			if ((!isInLine && !without) || (without && isInLine)) {
 				filtered_array.push(line);
 			}
 		});
-		console.log(filtered_array);
 	}
 }
 

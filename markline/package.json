@@ -11,6 +11,7 @@
 	],
 	"activationEvents": [
 		"onCommand:extension.markline",
+		"onCommand:extension.removeMarker",
 		"onCommand:extension.deleteLinesWith",
 		"onCommand:extension.deleteLinesWithout"
 	],
@@ -28,6 +29,10 @@
 			{
 				"command": "extension.deleteLinesWithout",
 				"title": "deleteLinesWithout"
+			},
+			{
+				"command": "extension.removeMarker",
+				"title": "clearMarkers"
 			}
 		]
 	},
