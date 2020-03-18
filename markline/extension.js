@@ -3,6 +3,7 @@
 const vscode = require('vscode');
 var search_for = [];
 var text_array = [];
+var range;
 var filtered_array = [];
 
 // this method is called when your extension is activated
@@ -30,14 +31,26 @@ function activate(context) {
 
 	let deleteLinesWith = vscode.commands.registerCommand('extension.deleteLinesWith', function () {
 		vscode.window.showInformationMessage('Delete Lines With: '+search_for.join(','));
-		getEditorText();
-		removeLines(false);
+		let editor = vscode.window.activeTextEditor;
+		if(editor) {
+			getEditorText(editor);
+			removeLines(false);
+			editor.edit(function(editBuilder){
+				editBuilder.replace(range, filtered_array.join('\n'));
+			});
+		}
 	});
 
 	let deleteLinesWithOut = vscode.commands.registerCommand('extension.deleteLinesWithout', function () {
 		vscode.window.showInformationMessage('Delete Lines Without: '+search_for.join(','));
-		getEditorText();
-		removeLines(true);
+		let editor = vscode.window.activeTextEditor;
+		if(editor) {
+			getEditorText(editor);
+			removeLines(true);
+			editor.edit(function(editBuilder){
+				editBuilder.replace(range, filtered_array.join('\n'));
+			});
+		}
 	});
 
 	context.subscriptions.push(register_searching);
@@ -50,15 +63,19 @@ async function addInput(input) {
 	vscode.window.showInformationMessage('Your searching for: '+search_for.join(','));
 }
 
-function getEditorText() {
-	let editor = vscode.window.activeTextEditor;
-
-	if(editor) {
+function getEditorText(editor) {
 		let document = editor.document;
 		let editor_text = document.getText();
 		text_array = editor_text.split('\n');
 		console.log(text_array);
-	}
+		const textEditor = vscode.window.activeTextEditor;
+
+		var firstLine = textEditor.document.lineAt(0);
+		var lastLine = textEditor.document.lineAt(textEditor.document.lineCount - 1);
+		range = new vscode.Range(0,
+			firstLine.range.start.character,
+			textEditor.document.lineCount - 1,
+			lastLine.range.end.character);
 }
 
 function removeLines(without) {
