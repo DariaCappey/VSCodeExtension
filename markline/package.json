@@ -3,6 +3,7 @@
 	"displayName": "lineMarker",
 	"description": "",
 	"version": "0.0.1",
+	"publisher": "dcappey",
 	"engines": {
 		"vscode": "^1.43.0"
 	},
@@ -50,9 +51,7 @@
 		"glob": "^7.1.6",
 		"mocha": "^7.0.1",
 		"typescript": "^3.7.5",
-		"vscode-test": "^1.3.0"
-	},
-	"dependencies": {
+		"vscode-test": "^1.3.0",
 		"vscode": "^1.1.36"
 	}
 }
