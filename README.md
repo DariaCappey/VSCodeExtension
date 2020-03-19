@@ -4,7 +4,7 @@ This is an extenstion for VisualStudio Code.
 
 You can mark lines containing special words or strings and delete all lines with or all lines without them.
 
-![demo](markline/demo_new.gif)
+![demo](https://github.com/DariaCappey/VSCodeExtension/blob/master/markline/demo_new.gif)
 
 ## Features
 
