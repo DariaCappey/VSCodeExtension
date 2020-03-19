@@ -1,6 +1,8 @@
 # markline VS Code Extension
 
-This is an extenstion for VisualStudio Code.
+This is an extenstion for VisualStudio Code. 
+
+Get the extension in VSCode: Just search for *lineMaker*!
 
 You can mark lines containing special words or strings and delete all lines with or all lines without them.
 
