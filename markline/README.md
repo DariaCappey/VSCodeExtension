@@ -20,6 +20,10 @@ You can mark lines containing special words or strings and delete all lines with
 
 Initial release of marline extension. 
 
+### 1.0.1
+
+- added text highlighting for searched strings 
+
 ## Known Issues
 
 For any bugs or requests, please open an Issue in my Git Repo: https://github.com/DariaCappey/VSCodeExtension . Thanks For using!
