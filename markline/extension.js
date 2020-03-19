@@ -62,7 +62,8 @@ function activate(context) {
 		search_for = [];
 		text_array = [];
 		filtered_array = [];
-		highlighting_definition.dispose();
+		highlighting = [];
+		editor.setDecorations(highlighting_definition, []);
 	});
 
 	/**
@@ -80,7 +81,7 @@ function activate(context) {
 		
 			vscode.env.clipboard.writeText(editor.document.getText());
 			vscode.window.showInformationMessage('Delete Lines With: '+search_for.join(','));
-			highlighting_definition.dispose();
+			editor.setDecorations(highlighting_definition, []);
 		}
 	});
 
@@ -100,7 +101,7 @@ function activate(context) {
 		
 			vscode.env.clipboard.writeText(editor.document.getText());
 			vscode.window.showInformationMessage('Delete Lines Without: '+search_for.join(','));
-			highlighting_definition.dispose();
+			editor.setDecorations(highlighting_definition, []);
 		}
 	});
 
