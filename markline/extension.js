@@ -55,6 +55,8 @@ function activate(context) {
 				editBuilder.replace(range, filtered_array.join('\n'));
 			});
 		}
+
+		vscode.env.clipboard.writeText(editor.document.getText());
 		vscode.window.showInformationMessage('Delete Lines With: '+search_for.join(','));
 		highlighting_definition.dispose();
 	});
@@ -68,6 +70,8 @@ function activate(context) {
 				editBuilder.replace(range, filtered_array.join('\n'));
 			});
 		}
+
+		vscode.env.clipboard.writeText(editor.document.getText());
 		vscode.window.showInformationMessage('Delete Lines Without: '+search_for.join(','));
 		highlighting_definition.dispose();
 	});
