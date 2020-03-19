@@ -2,7 +2,7 @@
 
 This is an extenstion for VisualStudio Code. 
 
-Get the extension in VSCode: Just search for *lineMaker*!
+Get the extension in VSCode: Just search for *lineMarker*!
 
 You can mark lines containing special words or strings and delete all lines with or all lines without them.
 
