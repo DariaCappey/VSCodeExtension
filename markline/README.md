@@ -4,15 +4,17 @@ This is an extenstion for VisualStudio Code.
 
 You can mark lines containing special words or strings and delete all lines with or all lines without them.
 
+![demo](demo.gif)
+
 ## Features
 
-*markline* : opens Input window. Type in your word/string you search for. You can add as many words/strings as you want to. - all markers will each time be shown in an info window in the right bottom corner.
+*markline* : Opens Input window. Type in your word/string you search for. You can add as many words/strings as you want to. - all markers will each time be shown in an info window in the right bottom corner.
 
-*clearMarkers* : clears all the markers.
+*clearMarkers* : Clears all the markers.
 
-*deleteLinesWith* : deletes all lines containing one of the searched for strings.
+*deleteLinesWith* : Deletes all lines containing one of the searched for strings.
 
-*deleteLinesWithout* : deletes all lines NOT containing one of the searched for strings.
+*deleteLinesWithout* : Deletes all lines NOT containing one of the searched for strings.
 
 ## Release Notes
 
@@ -22,8 +24,12 @@ Initial release of marline extension.
 
 ### 1.0.1
 
-- added text highlighting for searched strings 
+- Added text highlighting for searched strings 
+
+### 1.0.2
+
+- Your new texteditor content is also automatically copied to your clipboard
 
 ## Known Issues
 
-For any bugs or requests, please open an Issue in my Git Repo: https://github.com/DariaCappey/VSCodeExtension . Thanks For using!
+For any bugs or requests, please open an Issue in my Git Repo: https://github.com/DariaCappey/VSCodeExtension . Thanks for using!
