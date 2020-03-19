@@ -4,7 +4,7 @@ This is an extenstion for VisualStudio Code.
 
 You can mark lines containing special words or strings and delete all lines with or all lines without them.
 
-![demo](demo.gif)
+![demo](demo_new.gif)
 
 ## Features
 
