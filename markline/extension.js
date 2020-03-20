@@ -71,17 +71,8 @@ function activate(context) {
 	 * additionally it copies the new content of the file to the clipboard
 	 */
 	let delete_lines_with = vscode.commands.registerCommand('extension.deleteLinesWith', function () {
-		
 		if(editor) {
-			getEditorText(editor);
-			removeLines(false);
-			editor.edit(function(editBuilder){
-				editBuilder.replace(range, filtered_array.join('\n'));
-			});
-		
-			vscode.env.clipboard.writeText(editor.document.getText());
-			vscode.window.showInformationMessage('Delete Lines With: '+search_for.join(','));
-			editor.setDecorations(highlighting_definition, []);
+			changeEditor(false ,editor);
 		}
 	});
 
@@ -91,18 +82,9 @@ function activate(context) {
 	 * additionally it copies the new content of the file to the clipboard
 	 */
 	let delete_lines_without = vscode.commands.registerCommand('extension.deleteLinesWithout', function () {
-
 		if(editor) {
-			getEditorText(editor);
-			removeLines(true);
-			editor.edit(function(editBuilder){
-				editBuilder.replace(range, filtered_array.join('\n'));
-			});
-		
-			vscode.env.clipboard.writeText(editor.document.getText());
-			vscode.window.showInformationMessage('Delete Lines Without: '+search_for.join(','));
-			editor.setDecorations(highlighting_definition, []);
-		}
+			changeEditor(true,editor);
+		}		
 	});
 
 	// register commands
@@ -195,6 +177,31 @@ function checkIsInLine(line){
 		}
 	});
 	return isInLine;
+}
+
+/**
+ * changes the text in the activeEditor
+ * 
+ * @param without true, if lines should be deleted without containing the string, otherwise false
+ * @param {vscode.window.activeTextEditor} editor opened activeTextEditor
+ */
+function changeEditor(without, editor) {
+	if (without) {
+		var str_wo = 'Without';
+	} else {
+		var str_wo = 'With';
+	}
+
+	getEditorText(editor);
+	removeLines(without);
+	var newText = filtered_array.join('\n')
+	editor.edit(function(editBuilder){
+		editBuilder.replace(range, newText);
+	});
+	// Copy new file content to clipboard
+	vscode.env.clipboard.writeText(newText);
+	vscode.window.showInformationMessage('Delete Lines '+ str_wo +': ' + search_for.join(','));
+	editor.setDecorations(highlighting_definition, []);
 }
 
 exports.activate = activate;

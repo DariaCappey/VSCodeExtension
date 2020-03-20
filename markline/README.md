@@ -4,7 +4,7 @@ This is an extenstion for VisualStudio Code.
 
 You can mark lines containing special words or strings and delete all lines with or all lines without them.
 
-![demo](demo_new.gif)
+![demo](https://github.com/DariaCappey/VSCodeExtension/blob/master/markline/demo_new.gif?raw=true)
 
 ## Features
 
@@ -16,11 +16,13 @@ You can mark lines containing special words or strings and delete all lines with
 
 *deleteLinesWithout* : Deletes all lines NOT containing one of the searched for strings.
 
+Your new file content will be automatically copied to your clipboard. 
+
 ## Release Notes
 
 ### 1.0.0
 
-Initial release of marline extension. 
+- Initial release of marline extension. 
 
 ### 1.0.1
 
@@ -29,6 +31,9 @@ Initial release of marline extension.
 ### 1.0.2
 
 - Your new texteditor content is also automatically copied to your clipboard
+
+### 2.0.1
+- Fixed issues with copying to clipboard
 
 ## Known Issues
 

@@ -1,6 +1,5 @@
 # Change Log
 
-- Added text highlighting for searched Strings
-- Your new texteditor content is also automatically copied to your clipboard
+- Fixed Bug regarding copying new file content to clipboard
 
 Enjoy!
