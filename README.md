@@ -1,5 +1,7 @@
 # markline VS Code Extension
 
+https://marketplace.visualstudio.com/items?itemName=dariacappey.markline&ssr=false#overview
+
 This is an extenstion for VisualStudio Code.
 
 You can mark lines containing special words or strings and delete all lines with or all lines without them.
