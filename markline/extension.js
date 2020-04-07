@@ -64,6 +64,7 @@ function activate(context) {
 		filtered_array = [];
 		highlighting = [];
 		editor.setDecorations(highlighting_definition, []);
+		getEditorText(editor);
 	});
 
 	/**
@@ -87,11 +88,24 @@ function activate(context) {
 		}		
 	});
 
+	/**
+	 * reloads the arrays and strings for new/updated editor
+	 */
+	let reload_active_editor = vscode.commands.registerCommand('extension.reloadEditor', function () {
+		if (!editor){
+			editor = vscode.window.activeTextEditor;
+		}
+		if(editor) {
+			getEditorText(editor);
+		}		
+	});
+
 	// register commands
 	context.subscriptions.push(register_searching);
 	context.subscriptions.push(remove_marker);
 	context.subscriptions.push(delete_lines_with);
 	context.subscriptions.push(delete_lines_without);
+	context.subscriptions.push(reload_active_editor);
 }
 
 /**

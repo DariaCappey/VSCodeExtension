@@ -2,7 +2,7 @@
 	"name": "markline",
 	"displayName": "lineMarker",
 	"description": "VSCode Extension for deleting lines (not) containing specified strings",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"publisher": "dariacappey",
 	"repository": {
 		"type": "git",
@@ -18,7 +18,8 @@
 		"onCommand:extension.markline",
 		"onCommand:extension.removeMarker",
 		"onCommand:extension.deleteLinesWith",
-		"onCommand:extension.deleteLinesWithout"
+		"onCommand:extension.deleteLinesWithout",
+		"onCommand:extension.reloadEditor"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -38,6 +39,10 @@
 			{
 				"command": "extension.removeMarker",
 				"title": "clearMarkers"
+			},
+			{
+				"command": "extension.reloadEditor",
+				"title": "reloadEditor"
 			}
 		]
 	},

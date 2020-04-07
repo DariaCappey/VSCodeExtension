@@ -12,6 +12,8 @@ You can mark lines containing special words or strings and delete all lines with
 
 *clearMarkers* : Clears all the markers.
 
+*reloadEditor* : You need to do this, if you change the editor-window to reload the document into the extension.
+
 *deleteLinesWith* : Deletes all lines containing one of the searched for strings.
 
 *deleteLinesWithout* : Deletes all lines NOT containing one of the searched for strings.
@@ -34,6 +36,10 @@ Your new file content will be automatically copied to your clipboard.
 
 ### 2.0.1
 - Fixed issues with copying to clipboard
+
+### 2.0.2
+- Fixed Bug: opening new window or changing content of active Window - when you clearMarks, you can start searching again in new/updated file
+- With "reloadEditor" you can reload the active editor but the marks will stay saved
 
 ## Known Issues
 
